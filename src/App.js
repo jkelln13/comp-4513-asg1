@@ -24,7 +24,7 @@ function App() {
 
   return (
     <main>
-      <HomeView />;
+      <HomeView movies={movies} />;
     </main>
   );
 }
