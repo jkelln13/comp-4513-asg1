@@ -24,7 +24,7 @@ function App() {
 
   return (
     <main>
-      <HomeView />;
+      <HomeView />
     </main>
   );
 }
