@@ -1,7 +1,12 @@
 import React from 'react'
 import bg_image from "../bg_image.jpg"
 
-function HomeView() {
+const HomeView = props => {
+
+    const handleViewClick = () => {
+
+    }
+
     return (
         <div class="flex h-screen w-full items-center justify-center bg-cover bg-no-repeat" style={{ backgroundImage: `url(${bg_image})` }}>
             <div class="container font-sans text-white rounded-xl bg-gray-900 bg-opacity-75 px-16 py-10 shadow-lg">
@@ -18,6 +23,13 @@ function HomeView() {
             </div>
         </div>
     )
+        < div class="bg-auto bg-no-repeat bg-center" style = {{ backgroundImage: `url(${bg_image})` }
+}>
+            <h3>Movie Browser</h3>
+            <div className="searchBar-area">Title: <input type="text"></input></div>
+            <button onClick={handleViewClick}>Show Matching Movies</button><button onClick={handleViewClick}>Show All Movies</button>
+        </div >
+    );
 }
 
 export default HomeView
