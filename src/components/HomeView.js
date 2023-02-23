@@ -3,8 +3,14 @@ import bg_image from "../bg_image.jpg"
 
 const HomeView = props => {
 
-    const handleViewClick = () => {
+    const [currentMovie, setCurrentMovie] = React.useState(1);
 
+    const handleViewClickAll = () => {
+        props.showMovieDetails(props.movie.id);
+    }
+
+    const showMovieDetails = (id) => {
+        setCurrentMovie(id);
     }
 
     return (
@@ -16,8 +22,8 @@ const HomeView = props => {
                     <input class="col-start-3 col-end-9 searchBar-area"></input>
                 </form>
                 <div class="grid grid-cols-10">
-                    <button class="col-start-3 col-span-3 mx-auto bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded" onClick={handleViewClick}>Show Matching Movies</button>
-                    <button class="col-start-6 col-span-3 mx-auto bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded" onClick={handleViewClick}>Show All Movies</button>
+                    <button class="col-start-3 col-span-3 mx-auto bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded" onClick={handleViewClickAll}>Show Matching Movies</button>
+                    <button class="col-start-6 col-span-3 mx-auto bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded" onClick={handleViewClickAll}>Show All Movies</button>
                 </div>
 
             </div>
