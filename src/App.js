@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import HomeView from './components/HomeView';
+import DefaultView from './components/DefaultView'
 import React, { useEffect, useState } from "react";
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
 
   return (
     <main>
-      <HomeView movies={movies} />
+      {/* <HomeView movies={movies} /> */}
+      <DefaultView></DefaultView>
     </main>
   );
 }
