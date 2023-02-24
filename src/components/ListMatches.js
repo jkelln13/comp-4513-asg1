@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MovieDetails = props => {
+const ListMatches = props => {
     return(
         <div class="h-screen col-start-3 col-span-4 row-span-10 bg-blue-300 rounded-xl p-8 ">
             <p>TEST</p>
@@ -8,4 +8,4 @@ const MovieDetails = props => {
     )
 }
 
-export default MovieDetails;
+export default ListMatches;

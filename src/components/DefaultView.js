@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import MovieFilters from './MovieFilters'
-import MovieDetails from './MovieDetails'
+import ListMatches from './ListMatches'
 import Favorites from './Favorites'
 
 const DefaultView = props => {
@@ -11,7 +11,7 @@ const DefaultView = props => {
 
             <div class="grid grid-cols-8 grid-rows-10 gap-10 font-sans text-black">
                 <MovieFilters></MovieFilters>
-                <MovieDetails></MovieDetails>
+                <ListMatches></ListMatches>
                 <Favorites></Favorites>
             </div>
 
