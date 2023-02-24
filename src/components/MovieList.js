@@ -1,9 +1,11 @@
 import React from 'react';
+import MovieDetails from './MovieDetails';
+import ListMatches from './ListMatches';
 
 const MovieList = props => {
 
-    const handleViewClick = () => {
-        props.showMovieDetails(props.movie.id);
+    const handleViewClick = (movie) => {
+        <MovieDetails movie={movie} key={movie.id} addToFavorite={addToFavorite} />
     }
 
     const addToFavorite = (id) => {
@@ -25,7 +27,7 @@ const MovieList = props => {
                 <h3>{movie.ratings.average}</h3>
                 <h3>{movie.ratings.average}</h3>
                 <button onClick={addToFavorite(movie.id)}>❤</button>
-                <button onClick={handleViewClick}>View</button>
+                <button onClick={handleViewClick(movie)}>View</button>
             </div>
         );
     }
@@ -33,7 +35,8 @@ const MovieList = props => {
     if (props.movies.length > 1) {
         return (
             <article className="movieList">
-                {props.movies.map((m) => movieItem(m))}
+                {/*{props.movies.map((m) => movieItem(m))}*/}
+                <ListMatches movies={props.movies} movieItem={movieItem} addToFavorite={addToFavorite} handleViewClick={handleViewClick} />
             </article>
         );
     } else {
