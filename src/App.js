@@ -25,10 +25,9 @@ function App() {
 
   return (
     <main>
-      <HomeView movies={movies} key={movies.id} />
       <Routes>
-        <Route path='/' exact element={HomeView} />
-        <Route path='/default' element={<DefaultView movies={movies} />} />
+        <Route path='/default' element={<HomeView />} />
+        <Route exact path='/list' element={<DefaultView movies={movies} />} />
       </Routes>
     </main>
   );

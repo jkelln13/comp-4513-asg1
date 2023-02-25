@@ -16,7 +16,7 @@ const HomeView = props => {
                 <div class="grid grid-cols-10">
 
                     <button class="col-start-3 col-span-3 mx-auto bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded">Show Matching Movies</button>
-                    <Link to='/default' movies={props.movies} key={props.key}>
+                    <Link to='/list'>
                         <button class="col-start-6 col-span-3 mx-auto bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded">Show All Movies</button>
                     </Link>
                 </div>
