@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Favorites from './Favorites';
 
 const ListMatches = props => {
 
@@ -16,10 +18,17 @@ const ListMatches = props => {
                 <p class="col-start-5 col-span-1">{year}</p>
                 <p class="col-start-6 col-span-1">{movie.ratings.average}</p>
                 <p class="col-start-7 col-span-1">{movie.ratings.average}</p>
-                <button class="col-start-9 col-span-1">❤</button>
-                <button class="col-start-10 col-span-1">View</button>
+                <button onClick={() => addToFavorites(movie.id)} class="col-start-9 col-span-1">❤</button>
+                <Link to='/moviedetails' >
+                    <button class="col-start-10 col-span-1">View</button>
+                </Link>
             </div>
         );
+    }
+
+    const addToFavorites = id => {
+        if (!props.favorite.includes(id)) props.setFavorite(props.favorite.concat(id));
+        console.log(id);
     }
 
     const movies = [...props.movies];
