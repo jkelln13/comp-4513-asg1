@@ -10,7 +10,7 @@ const ListMatches = props => {
         const year = date[0];
 
         return (
-            <div class="grid grid-cols-10 pt-8 items-center">
+            <div key={movie.id} class="grid grid-cols-10 pt-8 items-center">
                 <img class="col-start-1 col-span-1" width="92" height="92" src={imgURL} alt={movie.title}></img>
                 <p class="col-start-2 col-span-3 r">{movie.title}</p>
                 <p class="col-start-5 col-span-1">{year}</p>

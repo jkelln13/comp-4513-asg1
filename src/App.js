@@ -27,7 +27,7 @@ function App() {
     <main>
       <HomeView movies={movies} key={movies.id} />
       <Routes>
-        <Route path='/' exact component={HomeView} />
+        <Route path='/' exact element={HomeView} />
         <Route path='/default' element={<DefaultView movies={movies} />} />
       </Routes>
     </main>
