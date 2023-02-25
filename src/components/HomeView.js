@@ -1,16 +1,11 @@
 import React from 'react'
+import DefaultView from './DefaultView';
 import bg_image from "../bg_image.jpg"
 
 const HomeView = props => {
 
-    const [currentMovie, setCurrentMovie] = React.useState(1);
-
     const handleViewClickAll = () => {
-        props.showMovieDetails(props.movie.id);
-    }
-
-    const showMovieDetails = (id) => {
-        setCurrentMovie(id);
+        <DefaultView movies={props.movies} />
     }
 
     return (
