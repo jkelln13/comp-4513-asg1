@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import HomeView from './components/HomeView';
 import DefaultView from './components/DefaultView'
 import React, { useEffect, useState } from "react";
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -25,8 +25,12 @@ function App() {
 
   return (
     <main>
-      {/* <HomeView movies={movies} /> */}
-      <DefaultView movies={movies} />
+      <Routes>
+        {/* <HomeView movies={movies} /> */}
+        <DefaultView movies={movies} />
+        <Route path='/' exact component={HomeView} />
+        <Route path='/default' element={<DefaultView movies={movies} />} />
+      </Routes>
     </main>
   );
 }
