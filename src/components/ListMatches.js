@@ -22,6 +22,19 @@ const ListMatches = props => {
         );
     }
 
+    const movies = [...props.movies];
+    const sortedMovies = movies.sort(function (a, b) {
+        if (a.title < b.title) {
+            return -1;
+        }
+        if (a.title > b.title) {
+            return 1;
+        }
+        return 0;
+    });
+
+    console.log(sortedMovies);
+
     return (
         <div class="h-screen col-start-3 col-span-4 row-span-10 bg-blue-300 rounded-xl p-8 ">
             <p class="text-2xl text-center font-semibold pb-16">List/Matches</p>
@@ -33,7 +46,9 @@ const ListMatches = props => {
                 <p class="col-start-7 col-span-1">Popularity</p>
             </div>
 
-            {props.movies.map((m) => movieItem(m))}
+
+
+            {sortedMovies.map((m) => movieItem(m))}
 
             {/*<div class="grid grid-cols-10 pt-8 items-center">
                 <img class="col-start-1 col-span-1" width="92" height="92" src="https://icons.iconarchive.com/icons/iconsmind/outline/256/Film-icon.png" alt="img"></img>
