@@ -7,12 +7,12 @@ import Favorites from './Favorites'
 const DefaultView = props => {
     return (
         <div class="grid gap-10">
-            <Header></Header>
+            <Header />
 
             <div class="grid grid-cols-8 grid-rows-10 gap-10 font-sans text-black">
-                <MovieFilters></MovieFilters>
-                <ListMatches></ListMatches>
-                <Favorites></Favorites>
+                <MovieFilters />
+                <ListMatches movies={props.movies} />
+                <Favorites />
             </div>
 
         </div>
