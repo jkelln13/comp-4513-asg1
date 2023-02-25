@@ -11,7 +11,7 @@ const DefaultView = props => {
 
             <div class="grid grid-cols-8 grid-rows-10 gap-10 font-sans text-black">
                 <MovieFilters />
-                <ListMatches movies={props.movies} />
+                <ListMatches movies={props.movies} key={props.movies.id} />
                 <Favorites />
             </div>
 

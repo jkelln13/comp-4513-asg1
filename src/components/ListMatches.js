@@ -2,18 +2,18 @@ import React from 'react';
 
 const ListMatches = props => {
 
-    let movieExample = props.movies[1];
-    console.log(movieExample);
-
     const movieItem = (movie) => {
 
         const imgURL = `https://image.tmdb.org/t/p/w92${movie.poster}`;
+
+        const date = movie.release_date.split('-');
+        const year = date[0];
 
         return (
             <div class="grid grid-cols-10 pt-8 items-center">
                 <img class="col-start-1 col-span-1" width="92" height="92" src={imgURL} alt={movie.title}></img>
                 <p class="col-start-2 col-span-3 r">{movie.title}</p>
-                <p class="col-start-5 col-span-1">{movie.release_date}</p>
+                <p class="col-start-5 col-span-1">{year}</p>
                 <p class="col-start-6 col-span-1">{movie.ratings.average}</p>
                 <p class="col-start-7 col-span-1">{movie.ratings.average}</p>
                 <button class="col-start-9 col-span-1">❤</button>
