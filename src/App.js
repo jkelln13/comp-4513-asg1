@@ -26,13 +26,18 @@ function App() {
     getData();
   }, []);
 
+  const addToFavorites = id => {
+    const data = movies.find(movie => movie.id === id);
+    setFavorites(data)
+  };
+
   return (
     <main>
       <Routes>
         <Route path='/' element={<HomeView />} />
-        <Route exact path='/list' element={<DefaultView movies={movies} favorites={favorites} setfav={setFavorites} />} />
-        <Route exact path='/moviedetails' element={<MovieDetails movies={movies} setfav={setFavorites} />} />
-        <Route path='/favorites' element={<Favorites movies={movies} />} />
+        <Route exact path='/list' element={<DefaultView movies={movies} add={addToFavorites} />} />
+        <Route exact path='/moviedetails' element={<MovieDetails movies={movies} add={addToFavorites} />} />
+        <Route path='/favorites' element={<Favorites movies={movies} favorites={favorites} />} />
       </Routes>
     </main>
   );
