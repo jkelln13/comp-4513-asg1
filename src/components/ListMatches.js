@@ -18,11 +18,13 @@ const ListMatches = props => {
                 <p class="col-start-5 col-span-1">{year}</p>
                 <p class="col-start-6 col-span-1">{movie.ratings.average}</p>
                 <p class="col-start-7 col-span-1">{movie.ratings.average}</p>
-                <button onClick={() => addToFavorites(movie.id)} class="col-start-9 col-span-1">❤</button>
-                <Link to='/moviedetails' >
+                <Link state={movie}>
+                    <button class="col-start-9 col-span-1">❤</button>
+                </Link>
+                <Link to={'/moviedetails'} state={movie}>
                     <button class="col-start-10 col-span-1">View</button>
                 </Link>
-            </div>
+            </div >
         );
     }
 
@@ -41,8 +43,6 @@ const ListMatches = props => {
         }
         return 0;
     });
-
-    console.log(sortedMovies);
 
     return (
         <div class="h-screen col-start-3 col-span-4 row-span-10 bg-blue-300 rounded-xl p-8 ">
