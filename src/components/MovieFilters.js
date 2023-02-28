@@ -10,26 +10,34 @@ class MovieFilters extends React.Component{
             genreDisabled: null,
             yearDisabled: null,
             ratingDisabled: null,
+            inputText: null,
         }
 
         this.radioButtonSelected = this.radioButtonSelected.bind(this);
         this.reset = this.reset.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.processFilter = this.handleSubmit.bind(this);
+        this.processTitleFilter = this.processTitleFilter.bind(this);
+        this.saveInputText = this.saveInputText.bind(this);
+    }
+
+    async saveInputText(e){
+        await this.setState({inputText: e.target.value})
     }
 
     handleSubmit(){
+        let movies = this.props.movies;
         let filterType = this.state.selectedRadio;
 
-        if (filterType === 'title'){
-            
+        if (filterType === 'title' && this.state.selectedRadio === 'title'){
+            this.processTitleFilter();
         }
-
 
     }
 
-    processFilter(){
-        
+    processTitleFilter(){
+        let movies = this.props.movies;
+        alert(`text inputted: ${this.state.inputText}`)
+        let filteredMovies = movies.filter(movie => movie.title.includes(''))
     }
 
     radioButtonSelected(value){
@@ -70,8 +78,6 @@ class MovieFilters extends React.Component{
             default:
                 return null
         }
-
-        console.log(`VALUE IS: ${value.target.value}`)
     }
 
     //Resets all radio buttons & text inputs
@@ -94,12 +100,12 @@ class MovieFilters extends React.Component{
         return(
                 <div class="h-screen col-span-2 row-span-10 bg-blue-300 rounded-xl p-8 ">
                 <p class="text-2xl text-center font-semibold pb-16">Movie Filters</p>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={(e)=>{this.handleSubmit(e)}}>
                     {/*TITLE INPUT*/}
                     <div ref={(el) => {this.clearTitle = el;}} class="flex justify-between items-center pb-8">
                         <input disabled={(this.state.titleDisabled) ? "disabled":""} value="title" onChange={this.radioButtonSelected} checked={this.state.selectedRadio === "title"} id="radio-1" type="radio" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
                         <label for="radio-1" class="text-2xl font-semibold">Title</label>
-                        <input disabled={(this.state.titleDisabled) ? "disabled":""} id="title" class="searchBar-area"></input>
+                        <input onChange={(e)=> {this.saveInputText(e)}} disabled={(this.state.titleDisabled) ? "disabled":""} id="title" class="searchBar-area"></input>
                     </div>
 
                     {/*GENRE INPUT*/}
