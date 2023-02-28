@@ -4,8 +4,6 @@ import Favorites from './Favorites';
 
 const ListMatches = props => {
 
-    console.log(props.wordFilter);
-
     const movieItem = (movie) => {
 
         const imgURL = `https://image.tmdb.org/t/p/w92${movie.poster}`;
@@ -64,9 +62,10 @@ const ListMatches = props => {
     } else {
         const filteredMovies = [];
         movies.forEach(movie => {
-            let title = movie.title;
-            if (title.includes(props.wordFilter) === true) { filteredMovies.push(movie) }
-            console.log(filteredMovies);
+            let title = movie.title.toLowerCase();
+            if (title.match(props.wordFilter)) {
+                filteredMovies.push(movie)
+            }
         });
         return (
             <div class="h-screen col-start-3 col-span-4 row-span-10 bg-blue-300 rounded-xl p-8 ">
