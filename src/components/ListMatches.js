@@ -63,7 +63,8 @@ const ListMatches = props => {
         const filteredMovies = [];
         movies.forEach(movie => {
             let title = movie.title.toLowerCase();
-            if (title.match(props.wordFilter)) {
+            let search = props.wordFilter.toLowerCase();
+            if (title.match(search)) {
                 filteredMovies.push(movie)
             }
         });
