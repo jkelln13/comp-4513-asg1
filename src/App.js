@@ -9,7 +9,7 @@ import Favorites from './components/Favorites';
 function App() {
 
   const [movies, setMovies] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = ([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -27,8 +27,7 @@ function App() {
   }, []);
 
   const addToFavorites = id => {
-    const data = movies.find(movie => movie.id === id);
-    setFavorites(data)
+
   };
 
   return (
@@ -37,7 +36,7 @@ function App() {
         <Route path='/' element={<HomeView />} />
         <Route exact path='/list' element={<DefaultView movies={movies} add={addToFavorites} />} />
         <Route exact path='/moviedetails' element={<MovieDetails movies={movies} add={addToFavorites} />} />
-        <Route path='/favorites' element={<Favorites movies={movies} favorites={favorites} />} />
+        <Route path='/favorites' element={<Favorites movies={movies} favs={favorites} />} />
       </Routes>
     </main>
   );
