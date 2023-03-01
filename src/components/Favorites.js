@@ -14,8 +14,8 @@ const Favorites = props => {
 
 
                 <div class="grid grid-cols-2 items-center">
-                    <img class="col-start-1 col-span-1" width="92" height="92" src="https://icons.iconarchive.com/icons/iconsmind/outline/256/Film-icon.png" alt="img"></img>
-                    <p class="col-start-2 col-span-3 r">Title</p>
+                    {/* <img class="col-start-1 col-span-1" width="92" height="92" src="https://icons.iconarchive.com/icons/iconsmind/outline/256/Film-icon.png" alt="img"></img>
+                    <p class="col-start-2 col-span-3 r">Title</p> */}
                 </div>
             </div >
         )
