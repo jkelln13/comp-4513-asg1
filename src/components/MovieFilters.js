@@ -10,6 +10,8 @@ class MovieFilters extends React.Component{
             genreDisabled: null,
             yearDisabled: null,
             ratingDisabled: null,
+            lessDisabled: null,
+            moreDisabled: null,
             inputText: null,
         }
         this.props = props
@@ -25,35 +27,70 @@ class MovieFilters extends React.Component{
         await this.setState({inputText: e.target.value})
     }
 
+    async handleLessInputs(e){
+        await this.setState({inputText: e.target.value})
+
+
+    }
+
     handleSubmit(){
         let filterType = this.state.selectedRadio;
         let movies = [...this.props.movies]
 
-        if (filterType === 'title' && this.state.selectedRadio === 'title'){
+        if (filterType === 'title'){
             this.processTitleFilter(movies);
         }
 
-        else if (filterType === 'genre' && this.state.selectedRadio === 'genre'){
+        else if (filterType === 'genre'){
             this.processGenreFilter(movies);
+        }
+
+        else if (filterType === 'year'){
+            this.processYearFilter(movies);
+        }
+
+        else if (filterType === 'rating'){
+            this.processRatingFilter(movies);
         }
 
     }
 
     processTitleFilter(movies){
-
         let filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(this.state.inputText.toLowerCase()))
 
         this.props.updateList(filteredMovies)
     }
 
     processGenreFilter(movies){
-        let filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(this.state.inputText.toLowerCase()))
+
+        let filteredMovies = [];
+
+        movies.forEach((movie)=>{
+            movie.details.genres.forEach(genre=>{
+                if (genre.name.toLowerCase() === this.state.inputText.toLowerCase()){
+                    filteredMovies.push(movie)
+                }
+            })
+        })
+
+        this.props.updateList(filteredMovies)
     }
+
+    processYearFilter(movies){
+
+    }
+
+    processRatingFilter(movies){
+
+    }
+
+    
 
     radioButtonSelected(value){
         this.setState({
             selectedRadio: value.target.value,
         });
+
         //Handles disabling other inputs
         switch(value.target.value){
             case 'title':
@@ -122,7 +159,7 @@ class MovieFilters extends React.Component{
                     <div ref={(el) => {this.clearGenre = el;}} class="flex justify-between items-center pb-8">
                         <input disabled={(this.state.genreDisabled) ? "disabled":""} value="genre" onChange={this.radioButtonSelected} checked={this.state.selectedRadio === "genre"} id="radio-2" type="radio" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
                         <label for="radio-2" class="text-2xl font-semibold">Genre</label>
-                        <input onChange={(e)=> {this.saveInputText(e)}} disabled={(this.state.genreDisabled) ? "disabled":""} class="searchBar-area"></input>
+                        <input onChange={(e)=> {this.saveInputText(e)}} disabled={(this.state.genreDisabled) ? "disabled":""} id="genre" class="searchBar-area"></input>
                     </div>
 
                     {/*YEAR INPUTS*/}
@@ -141,7 +178,7 @@ class MovieFilters extends React.Component{
 
                         <div class="flex justify-end pt-4">
                             <label for="year-greater" class="text-xl font-semibold pr-2">Greater</label>
-                            <input disabled={(this.state.yearDisabled) ? "disabled":""} id="year-greater" class="searchBar-area"></input>
+                            <input onChange={this.handleLessInputs} disabled={(this.state.yearDisabled) ? "disabled": this.state.yearDisabled ? "i"} id="year-greater" class="searchBar-area"></input>
                         </div>
 
                     </div>
