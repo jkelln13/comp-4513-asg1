@@ -1,15 +1,6 @@
-import React, { useState } from 'react';
 import About from './About'
-// import {useNavigate} from 'react-router-dom';
-// import HomeView from './HomeView';
 
 const Header = props => {
-
-    const [modal, setModal] = useState(false);
-
-    const toggleModal = () => {
-        setModal(!modal);
-    }
 
     return (
         <header class="flex justify-between items-center bg-blue-300 rounded-b-xl">
