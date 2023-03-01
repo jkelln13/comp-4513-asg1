@@ -17,7 +17,7 @@ const HomeView = props => {
                 <p class="text-2xl text-center font-semibold pb-16">Movie Browser</p>
                 <form class="grid grid-cols-10 pb-16">
                     <p class="text-2xl font-semibold">Title</p>
-                    <input class="col-start-3 col-end-9 searchBar-area" onChange={handleChange}></input>
+                    <input class="col-start-3 col-end-9 text-black searchBar-area" onChange={handleChange}></input>
                 </form>
                 <div class="grid grid-cols-10">
                     <Link class="col-start-3 col-span-3 mx-auto bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded" to='/list' state={message}>
@@ -31,9 +31,6 @@ const HomeView = props => {
             </div>
         </div>
     );
-
-
-    <div className="searchBar-area">Title: <input type="text"></input></div>
 }
 
 export default HomeView

@@ -85,7 +85,9 @@ const MovieDetails = props => {
                     <Link to="/list">
                         <button class="mx-5 my-5 bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded">Close</button>
                     </Link>
-                    <button class="mx-5 my-5 bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded">Add to Favs</button>
+                    <Link to='/list' state={state}>
+                        <button class="mx-5 my-5 bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded">Add to Favs</button>
+                    </Link>
                 </div>
 
             </div>

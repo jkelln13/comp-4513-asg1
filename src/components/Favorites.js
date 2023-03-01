@@ -1,7 +1,10 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Favorites = props => {
+
+    console.log(props.favs);
 
     const { state } = useLocation();
 
@@ -25,8 +28,10 @@ const Favorites = props => {
 
 
                 <div class="grid grid-cols-2 items-center">
-                    <img class="col-start-1 col-span-1" width="92" height="92" src={imgURL} alt={state.title}></img>
-                    <p class="col-start-2 col-span-3 r">{state.title}</p>
+                    <Link to='/list'>
+                        <img class="col-start-1 col-span-1" width="92" height="92" src={imgURL} alt={state.title}></img>
+                        <p class="col-start-2 col-span-3 r">{state.title}</p>
+                    </Link>
                 </div>
             </div >
         )
