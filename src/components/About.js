@@ -23,7 +23,7 @@ export default function About() {
 
     return (
         <div>
-            <button class="mx-5 my-5 bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded" onClick={openModal}>Open Modal</button>
+            <button class="mx-5 my-5 bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded" onClick={openModal}>About</button>
             <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
@@ -33,13 +33,13 @@ export default function About() {
                 <h1 ref={(_subtitle) => (subtitle = _subtitle)}>Comp 4513 - Assignment 1</h1>
                 <div>
                     <h2>Contributors:</h2>
-                    <p>Josh Kelln and </p>
+                    <p>Josh Kelln and Shargeel Hayat</p>
                 </div>
                 <div>
                     <h2><a href="https://github.com/jkelln13/comp-4513-asg1">Github Repo Link</a></h2>
                 </div>
                 <div>
-                    <h2>Technology Used</h2>
+                    <h2>Technology Used:</h2>
                     <ul>
                         <li>Visual Studio Code</li>
                         <li>React</li>

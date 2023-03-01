@@ -28,9 +28,11 @@ class MovieFilters extends React.Component{
     }
 
     async handleLessInputs(e){
-        await this.setState({inputText: e.target.value})
+        await this.setState({inputText: e.target.value, moreDisabled: true})
+    }
 
-
+    async handleMoreInputs(e){
+        await this.setState({inputText: e.target.value, lessDisabled: true})
     }
 
     handleSubmit(){
@@ -78,10 +80,38 @@ class MovieFilters extends React.Component{
 
     processYearFilter(movies){
 
+        // Condition: less input
+        if (this.state.moreDisabled === true){
+            let filteredMovies = movies.filter(movie => parseInt(movie.release_date.substr(0,4)) < parseInt(this.state.inputText))
+
+            this.props.updateList(filteredMovies)
+        }
+
+        // Condition: more input
+        else if (this.state.lessDisabled === true){
+            let filteredMovies = movies.filter(movie => parseInt(movie.release_date.substr(0,4)) > parseInt(this.state.inputText))
+
+            this.props.updateList(filteredMovies)
+        }
+
+
     }
 
     processRatingFilter(movies){
 
+        // Condition: less input
+        if (this.state.moreDisabled === true){
+            let filteredMovies = movies.filter(movie => parseFloat(movie.ratings.average) < parseFloat(this.state.inputText))
+
+            this.props.updateList(filteredMovies)
+        }
+
+        // Condition: more input
+        else if (this.state.lessDisabled === true){
+            let filteredMovies = movies.filter(movie => parseFloat(movie.ratings.average) > parseFloat(this.state.inputText))
+
+            this.props.updateList(filteredMovies)
+        }
     }
 
     
@@ -111,7 +141,7 @@ class MovieFilters extends React.Component{
                 this.setState({
                     titleDisabled: true,
                     genreDisabled: true,
-                    ratingDisabled: true
+                    ratingDisabled: true,
                 })
             break
             case 'rating':
@@ -173,12 +203,12 @@ class MovieFilters extends React.Component{
 
                         <div class="flex justify-end pt-4">
                             <label for="year-less" class="text-xl font-semibold pr-2">Less</label>
-                            <input disabled={(this.state.yearDisabled) ? "disabled":""} id="year-less" class="searchBar-area"></input>
+                            <input onChange={(e) => {this.handleLessInputs(e)}} disabled={(this.state.yearDisabled) ? "disabled": this.state.lessDisabled ? "disabled":""} id="year-less" class="searchBar-area"></input>
                         </div>
 
                         <div class="flex justify-end pt-4">
                             <label for="year-greater" class="text-xl font-semibold pr-2">Greater</label>
-                            <input onChange={this.handleLessInputs} disabled={(this.state.yearDisabled) ? "disabled": this.state.yearDisabled ? "i"} id="year-greater" class="searchBar-area"></input>
+                            <input onChange={(e) => {this.handleMoreInputs(e)}} disabled={(this.state.yearDisabled) ? "disabled": this.state.moreDisabled ? "disabled":""} id="year-greater" class="searchBar-area"></input>
                         </div>
 
                     </div>
@@ -194,12 +224,12 @@ class MovieFilters extends React.Component{
 
                         <div class="flex justify-end pt-4">
                             <label for="year-less" class="text-xl font-semibold pr-2">Less</label>
-                            <input disabled={(this.state.ratingDisabled) ? "disabled":""} id="year-less" class="searchBar-area"></input>
+                            <input onChange={(e) => {this.handleLessInputs(e)}} disabled={(this.state.ratingDisabled) ? "disabled": this.state.lessDisabled ? "disabled":""} id="year-less" class="searchBar-area"></input>
                         </div>
 
                         <div class="flex justify-end pt-4">
                             <label for="year-greater" class="text-xl font-semibold pr-2">Greater</label>
-                            <input disabled={(this.state.ratingDisabled) ? "disabled":""} id="year-greater" class="searchBar-area"></input>
+                            <input onChange={(e) => {this.handleMoreInputs(e)}} disabled={(this.state.ratingDisabled) ? "disabled": this.state.moreDisabled ? "disabled":""} id="year-greater" class="searchBar-area"></input>
                         </div>
                     </div>
 
