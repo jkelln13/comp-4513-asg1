@@ -23,7 +23,7 @@ const ListMatches = props => {
                 <p class="col-start-6 col-span-1">{movie.ratings.average}</p>
                 <p class="col-start-7 col-span-1">{movie.ratings.average}</p>
                 <Link state={movie}>
-                    <button onClick={() => props.add(movie.id)} class="col-start-9 col-span-1">❤</button>
+                    <button onClick={props.add(movie.id)} class="col-start-9 col-span-1">❤</button>
                 </Link>
                 <Link to={'/moviedetails'} state={movie}>
                     <button class="col-start-10 col-span-1">View</button>
