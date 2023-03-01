@@ -3,11 +3,12 @@ import HomeView from './components/HomeView';
 import DefaultView from './components/DefaultView'
 import MovieDetails from './components/MovieDetails'
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from 'react-router-dom';
+import { json, Route, Routes } from 'react-router-dom';
 import Favorites from './components/Favorites';
 
 function App() {
 
+  const [data, setData] = useState([]);
   const [movies, setMovies] = useState([]);
   const [favorites, setFavorites] = ([]);
 
@@ -26,11 +27,15 @@ function App() {
     getData();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('dataKey', JSON.stringify(data))
+  }, [data]);
+
   const addToFavorites = id => {
 
   };
 
-  function updateList (filteredArray){
+  function updateList(filteredArray) {
     setMovies()
     setMovies(filteredArray);
   };
@@ -39,7 +44,7 @@ function App() {
     <main>
       <Routes>
         <Route path='/' element={<HomeView />} />
-        <Route exact path='/list' element={<DefaultView movies={movies} add={addToFavorites} updateList={updateList}/>} />
+        <Route exact path='/list' element={<DefaultView movies={movies} add={addToFavorites} updateList={updateList} />} />
         <Route exact path='/moviedetails' element={<MovieDetails movies={movies} add={addToFavorites} />} />
         <Route path='/favorites' element={<Favorites movies={movies} favs={favorites} />} />
       </Routes>
