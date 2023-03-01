@@ -5,6 +5,7 @@ import MovieDetails from './components/MovieDetails'
 import React, { useEffect, useState } from "react";
 import { json, Route, Routes } from 'react-router-dom';
 import Favorites from './components/Favorites';
+import About from './components/About';
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
         <Route exact path='/list' element={<DefaultView movies={movies} add={addToFavorites} updateList={updateList} />} />
         <Route exact path='/moviedetails' element={<MovieDetails movies={movies} add={addToFavorites} />} />
         <Route path='/favorites' element={<Favorites movies={movies} favs={favorites} />} />
+        <Route path='/about' element={<About />} />
       </Routes>
     </main>
   );
