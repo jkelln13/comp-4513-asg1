@@ -20,11 +20,11 @@ const HomeView = props => {
                     <input class="col-start-3 col-end-9 searchBar-area" onChange={handleChange}></input>
                 </form>
                 <div class="grid grid-cols-10">
-                    <Link to='/list' state={message}>
-                        <button class="col-start-3 col-span-3 mx-auto bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded">Show Matching Movies</button>
+                    <Link class="col-start-3 col-span-3 mx-auto bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded" to='/list' state={message}>
+                        <button >Show Matching Movies</button>
                     </Link>
-                    <Link to='/list'>
-                        <button class="col-start-6 col-span-3 mx-auto bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded">Show All Movies</button>
+                    <Link class="col-start-6 col-span-3 mx-auto bg-slate-600 hover:bg-indigo-700 text-white text-base py-3 px-10 rounded" to='/list'>
+                        <button >Show All Movies</button>
                     </Link>
                 </div>
 

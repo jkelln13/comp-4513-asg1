@@ -30,11 +30,16 @@ function App() {
 
   };
 
+  function updateList (filteredArray){
+    setMovies()
+    setMovies(filteredArray);
+  };
+
   return (
     <main>
       <Routes>
         <Route path='/' element={<HomeView />} />
-        <Route exact path='/list' element={<DefaultView movies={movies} add={addToFavorites} />} />
+        <Route exact path='/list' element={<DefaultView movies={movies} add={addToFavorites} updateList={updateList}/>} />
         <Route exact path='/moviedetails' element={<MovieDetails movies={movies} add={addToFavorites} />} />
         <Route path='/favorites' element={<Favorites movies={movies} favs={favorites} />} />
       </Routes>

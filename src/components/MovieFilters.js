@@ -2,7 +2,7 @@ import React from 'react'
 
 class MovieFilters extends React.Component{
 
-    constructor(){
+    constructor(props){
         super();
         this.state = {
             selectedRadio: null,
@@ -12,12 +12,13 @@ class MovieFilters extends React.Component{
             ratingDisabled: null,
             inputText: null,
         }
-
+        this.props = props
         this.radioButtonSelected = this.radioButtonSelected.bind(this);
         this.reset = this.reset.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.processTitleFilter = this.processTitleFilter.bind(this);
         this.saveInputText = this.saveInputText.bind(this);
+
     }
 
     async saveInputText(e){
@@ -25,7 +26,6 @@ class MovieFilters extends React.Component{
     }
 
     handleSubmit(){
-        let movies = this.props.movies;
         let filterType = this.state.selectedRadio;
 
         if (filterType === 'title' && this.state.selectedRadio === 'title'){
@@ -35,9 +35,11 @@ class MovieFilters extends React.Component{
     }
 
     processTitleFilter(){
-        let movies = this.props.movies;
-        alert(`text inputted: ${this.state.inputText}`)
-        let filteredMovies = movies.filter(movie => movie.title.includes(''))
+        let movies = [...this.props.movies]
+
+        let filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(this.state.inputText))
+
+        this.props.updateList(filteredMovies)
     }
 
     radioButtonSelected(value){
