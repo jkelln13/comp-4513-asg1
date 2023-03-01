@@ -27,19 +27,27 @@ class MovieFilters extends React.Component{
 
     handleSubmit(){
         let filterType = this.state.selectedRadio;
+        let movies = [...this.props.movies]
 
         if (filterType === 'title' && this.state.selectedRadio === 'title'){
-            this.processTitleFilter();
+            this.processTitleFilter(movies);
+        }
+
+        else if (filterType === 'genre' && this.state.selectedRadio === 'genre'){
+            this.processGenreFilter(movies);
         }
 
     }
 
-    processTitleFilter(){
-        let movies = [...this.props.movies]
+    processTitleFilter(movies){
 
-        let filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(this.state.inputText))
+        let filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(this.state.inputText.toLowerCase()))
 
         this.props.updateList(filteredMovies)
+    }
+
+    processGenreFilter(movies){
+        let filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(this.state.inputText.toLowerCase()))
     }
 
     radioButtonSelected(value){
@@ -114,7 +122,7 @@ class MovieFilters extends React.Component{
                     <div ref={(el) => {this.clearGenre = el;}} class="flex justify-between items-center pb-8">
                         <input disabled={(this.state.genreDisabled) ? "disabled":""} value="genre" onChange={this.radioButtonSelected} checked={this.state.selectedRadio === "genre"} id="radio-2" type="radio" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
                         <label for="radio-2" class="text-2xl font-semibold">Genre</label>
-                        <input disabled={(this.state.genreDisabled) ? "disabled":""} class="searchBar-area"></input>
+                        <input onChange={(e)=> {this.saveInputText(e)}} disabled={(this.state.genreDisabled) ? "disabled":""} class="searchBar-area"></input>
                     </div>
 
                     {/*YEAR INPUTS*/}

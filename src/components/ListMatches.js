@@ -55,7 +55,7 @@ const ListMatches = props => {
                     <p class="col-start-7 col-span-1 pr-5">Popularity</p>
                 </div>
 
-                <div class="overflow-scroll h-screen">
+                <div class="overflow-scroll h-5/6">
                     {sortedMovies.map((m) => movieItem(m))}
                 </div>
             </div>
