@@ -5,7 +5,6 @@ import MovieDetails from './components/MovieDetails'
 import React, { useEffect, useState } from "react";
 import { json, Route, Routes } from 'react-router-dom';
 import Favorites from './components/Favorites';
-import About from './components/About';
 
 function App() {
 
