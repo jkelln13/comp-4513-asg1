@@ -52,7 +52,6 @@ function App() {
         <Route exact path='/list' element={<DefaultView movies={movies} add={addToFavorites} updateList={updateList} />} />
         <Route exact path='/moviedetails' element={<MovieDetails movies={movies} add={addToFavorites} />} />
         <Route path='/favorites' element={<Favorites movies={movies} favs={favorites} />} />
-        <Route path='/about' element={<About />} />
       </Routes>
     </main>
   );
